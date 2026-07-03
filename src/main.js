@@ -5,6 +5,8 @@ import { renderRecording } from './components/recording.js';
 import { renderLearningPath } from './components/learningPath.js';
 import { renderGamification, onPracticeComplete } from './components/gamification.js';
 import { renderWordLookup } from './components/wordLookup.js';
+import { renderSyncPanel } from './components/sync.js';
+import { startAutoSync, updateUserUI } from './utils/sync.js';
 import { speak, stopAudio } from './utils/audio.js';
 
 // ===== App State =====
@@ -317,4 +319,11 @@ renderRecording();
 renderLearningPath();
 renderWordLookup();
 renderGamification();
+renderSyncPanel();
 renderProgress();
+
+// Start auto-sync (30s interval) if user is logged in
+setTimeout(() => {
+  startAutoSync(renderProgress);
+  updateUserUI();
+}, 1000);

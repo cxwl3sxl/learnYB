@@ -23,6 +23,7 @@
         <button class="nav-link" data-tab="lookup">单词查询</button>
         <button class="nav-link" data-tab="gamification">激励中心</button>
         <button class="nav-link" data-tab="progress">我的进度</button>
+        <button class="nav-link sync-nav-btn" data-tab="sync">☁️ 同步</button>
       </nav>
     </div>
   </header>
@@ -84,6 +85,13 @@
       <p class="section-subtitle">追踪你的学习进度、打卡和成就</p>
       <div id="gamification-content"></div>
     </div>
+
+    <!-- Tab: Cloud Sync -->
+    <div class="tab-panel" id="tab-sync">
+      <h1 class="section-title">云端同步</h1>
+      <p class="section-subtitle">登录账号，多设备间同步学习数据</p>
+      <div id="sync-content"></div>
+    </div>
   </main>
 
   <!-- Detail Modal -->
@@ -113,5 +121,15 @@
   </div>
 
   <script type="module" src="/src/main.js"></script>
+  <script>
+    // Register Service Worker for offline support
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((reg) => console.log('SW registered:', reg.scope))
+          .catch((err) => console.log('SW registration failed:', err));
+      });
+    }
+  </script>
 </body>
 </html>
