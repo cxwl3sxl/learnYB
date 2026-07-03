@@ -2,6 +2,9 @@ import { ipaData } from './data/ipa.js';
 import { createSoundCard } from './components/soundCard.js';
 import { renderPractice } from './components/practice.js';
 import { renderRecording } from './components/recording.js';
+import { renderLearningPath } from './components/learningPath.js';
+import { renderGamification, onPracticeComplete } from './components/gamification.js';
+import { renderWordLookup } from './components/wordLookup.js';
 import { speak, stopAudio } from './utils/audio.js';
 
 // ===== App State =====
@@ -311,4 +314,7 @@ renderChart();
 renderContrast();
 renderPractice();
 renderRecording();
+renderLearningPath();
+renderWordLookup();
+renderGamification();
 renderProgress();
