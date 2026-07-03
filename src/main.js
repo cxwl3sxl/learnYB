@@ -1,6 +1,7 @@
 import { ipaData } from './data/ipa.js';
 import { createSoundCard } from './components/soundCard.js';
 import { renderPractice } from './components/practice.js';
+import { renderRecording } from './components/recording.js';
 import { speak, stopAudio } from './utils/audio.js';
 
 // ===== App State =====
@@ -309,4 +310,5 @@ function renderProgress() {
 renderChart();
 renderContrast();
 renderPractice();
+renderRecording();
 renderProgress();
