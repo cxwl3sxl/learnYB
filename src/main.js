@@ -1,5 +1,7 @@
 import { ipaData } from './data/ipa.js';
 import { createSoundCard } from './components/soundCard.js';
+import { renderPractice } from './components/practice.js';
+import { speak, stopAudio } from './utils/audio.js';
 
 // ===== App State =====
 const state = {
@@ -11,23 +13,6 @@ const state = {
 function saveState() {
   localStorage.setItem('learnyb_mastered', JSON.stringify(state.mastered));
   localStorage.setItem('learnyb_attempts', JSON.stringify(state.attempts));
-}
-
-// ===== Audio: use Web Speech API as fallback =====
-function speak(text, rate = 0.8) {
-  if (!('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = 'en-GB';
-  utter.rate = rate;
-  utter.pitch = 1;
-  window.speechSynthesis.speak(utter);
-}
-
-function stopAudio() {
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-  }
 }
 
 // ===== Tab Switching =====
@@ -323,4 +308,5 @@ function renderProgress() {
 // ===== Init =====
 renderChart();
 renderContrast();
+renderPractice();
 renderProgress();
