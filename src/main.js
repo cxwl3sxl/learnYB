@@ -7,7 +7,7 @@ import { renderGamification, onPracticeComplete } from './components/gamificatio
 import { renderWordLookup } from './components/wordLookup.js';
 import { renderSyncPanel } from './components/sync.js';
 import { startAutoSync, updateUserUI } from './utils/sync.js';
-import { speak, stopAudio } from './utils/audio.js';
+import { speak, stopAudio, playPhoneme } from './utils/audio.js';
 
 // ===== App State =====
 const state = {
@@ -55,9 +55,9 @@ function openModal(sound, type) {
 
   modal.classList.add('active');
 
-  // Auto-play
+  // Auto-play phoneme sound
   setTimeout(() => {
-    speak(sound.examples[0]);
+    playPhoneme(sound);
     // Animate waveform
     animateWaveform();
   }, 300);
@@ -79,7 +79,7 @@ document.addEventListener('keydown', (e) => {
 
 document.getElementById('modal-play-btn').addEventListener('click', () => {
   if (state.currentSound) {
-    speak(state.currentSound.examples[0]);
+    playPhoneme(state.currentSound);
     animateWaveform();
   }
 });
@@ -155,7 +155,7 @@ function renderChart() {
         // Hover: quick preview
         el.addEventListener('mouseenter', () => {
           if (!modal.classList.contains('active')) {
-            speak(sound.examples[0], 0.9);
+            playPhoneme(sound);
           }
         });
 
