@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LearnYB - 英语音标学习</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🔤</span>
+        <span>LearnYB</span>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-link active" data-tab="chart">音标表</button>
+        <button class="nav-link" data-tab="contrast">对比练习</button>
+        <button class="nav-link" data-tab="progress">我的进度</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <!-- Tab: Chart -->
+    <div class="tab-panel active" id="tab-chart">
+      <h1 class="section-title">国际音标表</h1>
+      <p class="section-subtitle">点击任意音标卡片查看详情和发音</p>
+      <div id="chart-content"></div>
+    </div>
+
+    <!-- Tab: Contrast -->
+    <div class="tab-panel" id="tab-contrast">
+      <h1 class="section-title">相似音标对比</h1>
+      <p class="section-subtitle">点击听取每组相似音标的发音差异</p>
+      <div id="contrast-content"></div>
+    </div>
+
+    <!-- Tab: Progress -->
+    <div class="tab-panel" id="tab-progress">
+      <h1 class="section-title">学习进度</h1>
+      <p class="section-subtitle">点击音标卡片可标记为"已掌握"</p>
+      <div id="progress-content"></div>
+    </div>
+  </main>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-symbol" id="modal-symbol"></span>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-section">
+          <div class="modal-section-title">发音技巧</div>
+          <div class="modal-tip" id="modal-tip"></div>
+        </div>
+        <div class="modal-section">
+          <div class="modal-section-title">例词</div>
+          <div class="modal-examples" id="modal-examples"></div>
+        </div>
+        <div class="modal-section">
+          <button class="modal-play-btn" id="modal-play-btn">
+            <span class="icon">🔊</span> 播放发音
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
